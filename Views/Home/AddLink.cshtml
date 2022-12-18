@@ -1,0 +1,53 @@
+﻿@model WebApplication5.Models.ScrapperLinkModel
+<hr />
+<h4>MyHome ის მისამართი აიღე ნეტვორკის რექუსეტიდან</h4>
+<h4>SS.GE ის მისამართი აიღე პირდაპირ ლინკიდან</h4>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AddLink">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="ScrapperUrl" class="control-label"></label>
+                <input asp-for="ScrapperUrl" class="form-control" />
+                <span asp-validation-for="ScrapperUrl" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PageCount" class="control-label"></label>
+                <input asp-for="PageCount" class="form-control" />
+                <span asp-validation-for="PageCount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CityName" class="control-label"></label>
+                <input asp-for="CityName" class="form-control" />
+                <span asp-validation-for="CityName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SiteType" class="control-label"></label>
+                <select asp-for="SiteType" class="form-control">
+                    <option value="MyHome">MyHome</option>
+                    <option value="SS">SS</option>
+                </select>
+                <span asp-validation-for="SiteType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StatementType" class="control-label"></label>
+                <select asp-for="StatementType" class="form-control">
+                    <option value="ბინა">ბინა</option>
+                    <option value="მიწა">მიწა</option>
+                </select>
+                <span asp-validation-for="StatementType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="დამატება" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="GetLink">ლინკების ნახვა</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

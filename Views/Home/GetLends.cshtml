@@ -1,0 +1,79 @@
+﻿@model IEnumerable<WebApplication5.Models.ScrapperModel>
+
+@{
+    ViewData["Title"] = "მიწები";
+}
+<p>
+    <a asp-action="Create">განახლება</a>
+</p>
+
+<p style="color:green">განცხადებების რაოდენობა : @ViewBag.StatementCount </p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.WebSiteName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HouseId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SquareMeter)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PriceOneSquareMeter)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PriceInUsd)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreateDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.JobCreate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.WebSiteName)
+                </td>
+                <td>
+                    @if (item.WebSiteName == "MYHOME.GE")
+                    {
+                        <a href="https://www.myhome.ge/ka/pr/@item.HouseId" target="_blank">@Html.DisplayFor(modelItem => item.HouseId)</a>
+                    }
+                    else if (item.WebSiteName == "SS.GE")
+                    {
+                        <a href="https://ss.ge/ka/udzravi-qoneba/@item.HouseId" target="_blank">@Html.DisplayFor(modelItem => item.HouseId)</a>
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SquareMeter)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PriceOneSquareMeter)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PriceInUsd)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreateDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.JobCreate)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
